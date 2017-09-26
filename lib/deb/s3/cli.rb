@@ -88,6 +88,11 @@ class Deb::S3::CLI < Thor
     "or when verifying it after removing a package. " +
     "Use --sign with your GPG key ID to use a specific key (--sign=6643C242C18FE05B)."
 
+  class_option :inrelease,
+  :default  => false,
+  :type     => :boolean,
+  :desc     => "Create InRelease file when signing the repository"
+
   class_option :gpg_options,
   :default => "",
   :type    => :string,
@@ -592,6 +597,7 @@ class Deb::S3::CLI < Thor
     Deb::S3::Utils.gpg_options = options[:gpg_options]
     Deb::S3::Utils.prefix      = options[:prefix]
     Deb::S3::Utils.encryption  = options[:encryption]
+    Deb::S3::Utils.inrelease   = options[:inrelease]
 
     # make sure we have a valid visibility setting
     Deb::S3::Utils.access_policy =

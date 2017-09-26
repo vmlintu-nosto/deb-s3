@@ -20,6 +20,8 @@ module Deb::S3::Utils
   def prefix= v; @prefix = v end
   def encryption; @encryption end
   def encryption= v; @encryption = v end
+  def inrelease; @inrelease end
+  def inrelease= v; @inrelease = v end
 
   class SafeSystemError < RuntimeError; end
   class AlreadyExistsError < RuntimeError; end
